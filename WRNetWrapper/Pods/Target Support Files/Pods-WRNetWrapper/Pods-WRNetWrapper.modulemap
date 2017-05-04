@@ -1,0 +1,6 @@
+framework module Pods_WRNetWrapper {
+  umbrella header "Pods-WRNetWrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}
