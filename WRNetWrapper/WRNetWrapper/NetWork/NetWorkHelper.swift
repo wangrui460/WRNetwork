@@ -16,9 +16,9 @@ let NetworkTimeoutInterval:Double = 10
 
 @objc protocol NetWorkHelperDelegate:NSObjectProtocol
 {
-    // TODO：研究 如果把data的类型改为Any会怎么样
-    @objc optional func netWortDidSuccess(data:AnyObject,requestName:String,parameters:NSDictionary);
-    @objc optional func netWortDidFailed (data:AnyObject,requestName:String,parameters:NSDictionary);
+    // TODO：研究 如果把result的类型改为Any会怎么样
+    @objc optional func netWortDidSuccess(result:AnyObject,requestName:String,parameters:NSDictionary);
+    @objc optional func netWortDidFailed (result:AnyObject,requestName:String,parameters:NSDictionary);
 }
 
 class NetWorkHelper: NSObject
@@ -69,11 +69,11 @@ class NetWorkHelper: NSObject
         { (response) in
             if (response.result.isSuccess)
             {
-                delegate.netWortDidSuccess?(data: response.result.value as AnyObject, requestName: requestName, parameters: parameters)
+                delegate.netWortDidSuccess?(result: response.result.value as AnyObject, requestName: requestName, parameters: parameters)
             }
             else
             {
-                delegate.netWortDidFailed?(data: response.result.value as AnyObject, requestName: requestName, parameters: parameters)
+                delegate.netWortDidFailed?(result: response.result.value as AnyObject, requestName: requestName, parameters: parameters)
             }
         }
     }
