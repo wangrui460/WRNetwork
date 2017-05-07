@@ -14,7 +14,8 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        title = "WRNetWrapper"
+        view.backgroundColor = UIColor.orange.withAlphaComponent(0.3)
         
     }
 

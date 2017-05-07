@@ -16,5 +16,7 @@ target 'WRNetWrapper' do
     
     #swift
     pod 'Alamofire', '~> 4.4'
+    pod 'SwiftyJSON'
+    pod 'Kingfisher'
 
 end
