@@ -80,7 +80,7 @@ extension AppDelegate: WRNetWrapperDelegate
     {
         if (requestName == requestSplashImage)
         {
-            let json = result as! JSON
+            let json = JSON(result)
 //            let dict = json.dictionaryValue
 //            let creatives = dict["creatives"]
 //            let url = creatives?[0]["url"].string
