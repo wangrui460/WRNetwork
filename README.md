@@ -13,18 +13,18 @@
 ///   - finishedCallback: 完成请求的回调
 class func request(method:HTTPMethod, url:String, parameters:NSDictionary?, finishedCallback:  @escaping (_ result : AnyObject, _ error: Error?) -> ())
 {
-Alamofire.request(url, method: method, parameters: parameters as? Parameters).responseJSON
-{ (response) in
-let data = response.result.value
-if (response.result.isSuccess)
-{
-finishedCallback(data as AnyObject, nil)
-}
-else
-{
-finishedCallback(data as AnyObject,response.result.error)
-}
-}
+    Alamofire.request(url, method: method, parameters: parameters as? Parameters).responseJSON
+    { (response) in
+        let data = response.result.value
+        if (response.result.isSuccess)
+        {
+            finishedCallback(data as AnyObject, nil)
+        }
+        else
+        {
+            finishedCallback(data as AnyObject,response.result.error)
+        }
+    }
 }
 </code></pre>
 
@@ -41,28 +41,25 @@ finishedCallback(data as AnyObject,response.result.error)
 ///   - delegate: 代理对象
 class func requestDelegate(method:HTTPMethod, url:String, requestName:String, parameters:NSDictionary?, delegate:AnyObject)
 {
-let config:URLSessionConfiguration = URLSessionConfiguration.default
-config.timeoutIntervalForRequest = NetworkTimeoutInterval
-sessionManager = SessionManager(configuration: config)
-Alamofire.request(url, method: method, parameters: parameters as? Parameters).responseJSON
-{ (response) in
-let data = response.result.value
-if (response.result.isSuccess)
-{
-delegate.netWortDidSuccess?(result: data as AnyObject, requestName: requestName, parameters: parameters)
-}
-else
-{
-delegate.netWortDidFailed?(result: data as AnyObject, error:response.error, requestName: requestName, parameters: parameters)
-}
-}
+    Alamofire.request(url, method: method, parameters: parameters as? Parameters).responseJSON
+    { (response) in
+        let data = response.result.value
+        if (response.result.isSuccess)
+        {
+            delegate.netWortDidSuccess?(result: data as AnyObject, requestName: requestName, parameters: parameters)
+        }
+        else
+        {
+            delegate.netWortDidFailed?(result: data as AnyObject, error:response.error, requestName: requestName, parameters: parameters)
+        }
+    }
 }
 
 @objc protocol WRNetWrapperDelegate:NSObjectProtocol
 {
-// TODO：研究 如果把result的类型改为Any会怎么样
-@objc optional func netWortDidSuccess(result:AnyObject, requestName:String, parameters:NSDictionary?);
-@objc optional func netWortDidFailed (result:AnyObject, error:Error?, requestName:String, parameters:NSDictionary?);
+    // TODO：研究 如果把result的类型改为Any会怎么样
+    @objc optional func netWortDidSuccess(result:AnyObject, requestName:String, parameters:NSDictionary?);
+    @objc optional func netWortDidFailed (result:AnyObject, error:Error?, requestName:String, parameters:NSDictionary?);
 }
 </code></pre>
 
@@ -76,10 +73,10 @@ WRApiContainer.requestSplashImage(delegate: self)
 // 网络请求成功
 func netWortDidSuccess(result: AnyObject, requestName: String, parameters: NSDictionary?)
 {
-if (requestName == requestSplashImage)
-{
-// 请求 requestSplashImage 对应的成功返回
-}
+    if (requestName == requestSplashImage)
+    {
+    // 请求 requestSplashImage 对应的成功返回
+    }
 }
 
 // 网络请求失败
@@ -94,17 +91,17 @@ func netWortDidFailed(result: AnyObject, error:Error?,  requestName: String, par
 let urlStr = "http://news-at.zhihu.com/api/7/prefetch-launch-images/1080*1920"
 WRNetWrapper.request(method: .get, url: urlStr, parameters: nil)
 { [weak self] (result, error) in
-if let weakSelf = self
-{
-if (error == nil)
-{
-// 请求成功
-}
-else
-{
-// 请求失败
-}
-}
+    if let weakSelf = self
+    {
+        if (error == nil)
+        {
+            // 请求成功
+        }
+        else
+        {
+            // 请求失败
+        }
+    }
 }
 </code></pre>
 
