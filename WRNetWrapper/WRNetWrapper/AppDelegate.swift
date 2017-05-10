@@ -24,6 +24,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 启动页闪屏网络请求，就这么简单
         WRApiContainer.requestSplashImage(delegate: self)
         
+        // 闭包回调的方式
+//        let urlStr = "http://news-at.zhihu.com/api/7/prefetch-launch-images/1080*1920"
+//        WRNetWrapper.request(method: .get, url: urlStr, parameters: nil)
+//        { [weak self] (result, error) in
+//            if let weakSelf = self
+//            {
+//                if (error == nil)
+//                {
+//                    // 请求成功
+//                }
+//                else
+//                {
+//                    // 请求失败
+//                }
+//            }
+//        }
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         let navVC:UINavigationController = UINavigationController.init(rootViewController: ViewController())
@@ -81,9 +98,9 @@ extension AppDelegate: WRNetWrapperDelegate
         if (requestName == requestSplashImage)
         {
             let json = JSON(result)
-//            let dict = json.dictionaryValue
-//            let creatives = dict["creatives"]
-//            let url = creatives?[0]["url"].string
+    //            let dict = json.dictionaryValue
+    //            let creatives = dict["creatives"]
+    //            let url = creatives?[0]["url"].string
             
             let splashUrl = json.dictionaryValue["creatives"]?[0]["url"].string
             
@@ -99,8 +116,8 @@ extension AppDelegate: WRNetWrapperDelegate
             })
         }
     }
-    
-    func netWortDidFailed(result: AnyObject, requestName: String, parameters: NSDictionary?)
+
+    func netWortDidFailed(result: AnyObject, error:Error?, requestName: String, parameters: NSDictionary?)
     {
         print(result.error)
     }
