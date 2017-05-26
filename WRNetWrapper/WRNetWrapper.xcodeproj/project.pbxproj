@@ -409,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC26A5FF25D541592CCF1562 /* Pods-WRNetWrapper.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
 				INFOPLIST_FILE = WRNetWrapper/Info.plist;
@@ -423,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE616E9B222FA09F2994EA84 /* Pods-WRNetWrapper.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 652U6LDTX4;
 				INFOPLIST_FILE = WRNetWrapper/Info.plist;
