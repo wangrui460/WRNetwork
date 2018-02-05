@@ -62,13 +62,8 @@ _reqTestE = req_test_e(self);
 _reqTestF = req_test_f(self);
 
 // 生成多请求对象
-_multiReq = [[WRMultiRequest alloc] initWithRequestArray:@[_reqTestA,
-                                                                                                  _reqTestB,
-                                                                                                  _reqTestC,
-                                                                                                  _reqTestD,
-                                                                                                  _reqTestE,
-                                                                                                  _reqTestF]
-                                                                                delegate:self];
+_multiReq = [[WRMultiRequest alloc] initWithRequestArray:@[_reqTestA,_reqTestB,_reqTestC,_reqTestD,_reqTestE,_reqTestF]
+                                                delegate:self];
 // 立即发起请求
 [_multiReq loadRequests];
 </code></pre>
@@ -89,33 +84,33 @@ _multiReq = [[WRMultiRequest alloc] initWithRequestArray:@[_reqTestA,
 当然你也可以使用 block 的方式
 <pre><code>
 - (WRNetWrapper *)requestWithURL:(NSString *)urlStr
-                                        parameters:(NSDictionary *)parameters
-                                        httpMethod:(WRNetWrapperHTTPMethod)httpMethod
-                                              isCache:(BOOL)isCache
-                                         cacheTime:(NSTimeInterval)cacheTime
-                                                 cache:(WRNetWrapperGetCacheBlock)cache
-                                              success:(WRNetWrapperRequestDidSuccessBlock)success
-                                                  failure:(WRNetWrapperRequestDidFailedBlock)failure;
+                      parameters:(NSDictionary *)parameters
+                      httpMethod:(WRNetWrapperHTTPMethod)httpMethod
+                         isCache:(BOOL)isCache
+                       cacheTime:(NSTimeInterval)cacheTime
+                           cache:(WRNetWrapperGetCacheBlock)cache
+                         success:(WRNetWrapperRequestDidSuccessBlock)success
+                         failure:(WRNetWrapperRequestDidFailedBlock)failure;
 </code></pre>
 
 上传文件
 <pre><code>
 + (__kindof NSURLSessionTask *)uploadWithURL:(NSString *)urlStr
-                                                             parameters:(id)parameters
-                                                                      name:(NSString *)name
-                                                                   filePath:(NSString *)filePath
-                                                                 progress:(WRNetWrapperProgress)progress
-                                                                  success:(WRNetWrapperRequestDidSuccessBlock)success
-                                                                      failure:(WRNetWrapperRequestDidFailedBlock)failure;
+                                  parameters:(id)parameters
+                                        name:(NSString *)name
+                                    filePath:(NSString *)filePath
+                                    progress:(WRNetWrapperProgress)progress
+                                     success:(WRNetWrapperRequestDidSuccessBlock)success
+                                     failure:(WRNetWrapperRequestDidFailedBlock)failure;
 </code></pre>
 
 下载文件
 <pre><code>
 + (__kindof NSURLSessionTask *)downloadWithURL:(NSString *)urlStr
-                                                                           fileDir:(NSString *)fileDir
-                                                                      progress:(WRNetWrapperProgress)progress
-                                                                       success:(void(^)(NSString *filePath))success
-                                                                           failure:(WRNetWrapperRequestDidFailedBlock)failure;
+                                       fileDir:(NSString *)fileDir
+                                      progress:(WRNetWrapperProgress)progress
+                                       success:(void(^)(NSString *filePath))success
+                                       failure:(WRNetWrapperRequestDidFailedBlock)failure;
 </code></pre>
 
 
