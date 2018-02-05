@@ -22,7 +22,7 @@ WRNetwork 是基于 AFNetworking 封装的一套网络请求框架。
 
 推荐使用方式请看文件 WRApis.h/m
 
-发起网络请求
+发起网络请求（这里会立即发起请求）
 <pre><code>
 self.reqWXList = req_wx_list(_curPage, self);
 </code></pre>
