@@ -53,7 +53,7 @@
 #pragma mark - 下面的所有 API 都需要经过这里
 
 /// 创建请求对象，将多个请求对象加入数组（适用于批量请求/依赖请求）
-WRNetWrapper *createRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* params, NSString *requestName, BOOL isCache, NSTimeInterval cacheTime, APICallBackDelegate callbake)
+WRNetWrapper *createRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* params, NSString *requestName, BOOL isCache, NSTimeInterval cacheTime, NetCallBack callbake)
 {
     WRRequestor* req = [[WRRequestor alloc] init];
     req.requestName = requestName;
@@ -68,7 +68,7 @@ WRNetWrapper *createRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* par
 }
 
 /// 创建请求对象后，立马发起请求
-WRNetWrapper *sendRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* params, NSString *requestName, BOOL isCache, NSTimeInterval cacheTime, APICallBackDelegate callbake) {
+WRNetWrapper *sendRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* params, NSString *requestName, BOOL isCache, NSTimeInterval cacheTime, NetCallBack callbake) {
     
     WRNetWrapper *req = createRequest(httpMethod, params, requestName, isCache, cacheTime, callbake);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -91,7 +91,7 @@ WRNetWrapper *sendRequest(WRNetWrapperHTTPMethod httpMethod, NSDictionary* param
 
 #pragma mark - 首页
 /// 请求 a ⚠️ 这里是 createRequest
-WRNetWrapper *req_test_a(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_a(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(0) forKey:@"pno"];
@@ -102,7 +102,7 @@ WRNetWrapper *req_test_a(APICallBackDelegate callBack) {
 }
 
 /// 请求 b
-WRNetWrapper *req_test_b(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_b(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(1) forKey:@"pno"];
@@ -113,7 +113,7 @@ WRNetWrapper *req_test_b(APICallBackDelegate callBack) {
 }
 
 /// 请求 c
-WRNetWrapper *req_test_c(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_c(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(2) forKey:@"pno"];
@@ -124,7 +124,7 @@ WRNetWrapper *req_test_c(APICallBackDelegate callBack) {
 }
 
 /// 请求 d
-WRNetWrapper *req_test_d(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_d(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(3) forKey:@"pno"];
@@ -135,7 +135,7 @@ WRNetWrapper *req_test_d(APICallBackDelegate callBack) {
 }
 
 /// 请求 e
-WRNetWrapper *req_test_e(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_e(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(4) forKey:@"pno"];
@@ -146,7 +146,7 @@ WRNetWrapper *req_test_e(APICallBackDelegate callBack) {
 }
 
 /// 请求 f
-WRNetWrapper *req_test_f(APICallBackDelegate callBack) {
+WRNetWrapper *req_test_f(NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(5) forKey:@"pno"];
@@ -177,7 +177,7 @@ WRNetWrapper *req_test_f(APICallBackDelegate callBack) {
 
 #pragma mark - 我的
 /// 笑话列表
-WRNetWrapper *req_wx_list(int pageIndex, APICallBackDelegate callBack) {
+WRNetWrapper *req_wx_list(int pageIndex, NetCallBack callBack) {
     
     NSMutableDictionary *dictM = [NSMutableDictionary new];
     [dictM setValue:@(pageIndex) forKey:@"pno"];
