@@ -118,6 +118,9 @@ _multiReq = [[WRMultiRequest alloc] initWithRequestArray:@[_reqTestA,_reqTestB,_
 
 将 WRNetwork 文件夹拽入项目中，导入头文件：#import "WRNetwork.h"
 
+## 联系我
+扫码回复1获取面试资料（持续更新）
+![](https://user-images.githubusercontent.com/11909313/123933944-6a4abe00-d9c5-11eb-83ca-379313a2af7c.png)
 
 ## 协议
 
